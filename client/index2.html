@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1;IE=9;FF=3;OtherUA=4" />
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dijit/themes/claro/claro.css" />
+	
+	<script>
+    dojoConfig = {
+        
+        isDebug: true,
+        parseOnLoad: false,
+        packages: [
+            {
+                name: "devnull",
+                location: "/packages"
+            }
+        ]
+    };
+</script>
+	<script src="//ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js.uncompressed.js"></script>
+        
+        
+	
+</head>
+<body class="claro">
+    <h1>List</h1>
+<div id="authorContainer"></div>
+
+<script>
+        require(["dojo/request", "dojo/dom", "dojo/_base/array", "devnull/ui/widget/AuthorWidget", "dojo/domReady!"],
+    function(request, dom, arrayUtil, AuthorWidget){
+    // Load up our authors
+    request("list.json", {
+        handleAs: "json"
+    }).then(function(authors){
+        // Get a reference to our container
+        var authorContainer = dom.byId("authorContainer");
+ 
+        arrayUtil.forEach(authors, function(author){
+            // Create our widget and place it
+            console.log("Got Author: " + author.name);
+            var widget = new AuthorWidget(author);
+            widget.placeAt(authorContainer);
+        });
+    });
+});
+        </script>
+</body>
+</html>

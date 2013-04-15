@@ -1,0 +1,48 @@
+﻿<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1;IE=9;FF=3;OtherUA=4" />
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+    <link rel="stylesheet"
+        href="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dijit/themes/claro/claro.css" />
+    
+<script>
+    dojoConfig = {
+        has: {
+            "dojo-firebug": true,
+            "dojo-debug-messages": true
+        },
+        // Don't attempt to parse the page for widgets
+        parseOnLoad: false,
+        packages: [
+            // Any references to a "demo" resource should load modules locally, *not* from CDN
+            {
+                name: "devnull",
+                location: "/packages"
+            }
+        ],
+        // Timeout after 10 seconds
+        waitSeconds: 10,
+        
+        // Get "fresh" resources
+        cacheBust: true
+    };
+</script>
+ 
+<!-- Load Dojo, Dijit, and DojoX resources from Google CDN -->
+<script src="//ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"></script>
+ 
+
+    <script>
+        // indicate we want custom.Hello to be loaded
+        dojo.require("devnull.ui.widget.MainWidget");
+        // wait for everything to load
+        dojo.ready(function(){
+            console.log('OK');
+        });
+    </script>
+  </head>
+  <body class="claro">
+    <div dojoType="devnull.ui.widget.MainWidget"></div>
+  </body>
+</html>
